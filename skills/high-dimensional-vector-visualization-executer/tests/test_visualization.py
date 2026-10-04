@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 from scipy import sparse
 
-SCRIPT = Path(__file__).resolve().parents[1] / 'skills/high-dimensional-vector-visualization-executer/scripts/visualize_vectors.py'
+SCRIPT = Path(__file__).resolve().parents[1] / 'scripts/visualize_vectors.py'
 spec = importlib.util.spec_from_file_location('visualize_vectors', SCRIPT)
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)

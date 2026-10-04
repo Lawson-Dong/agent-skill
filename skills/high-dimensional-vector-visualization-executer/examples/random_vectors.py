@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-SCRIPT = ROOT / 'skills/high-dimensional-vector-visualization-executer/scripts/visualize_vectors.py'
+SCRIPT = ROOT / 'scripts/visualize_vectors.py'
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)

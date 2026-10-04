@@ -3,14 +3,60 @@ on: [push, pull_request]
 permissions:
   contents: read
 jobs:
-  visualization:
+  discover:
     runs-on: ubuntu-latest
+    outputs:
+      skills: ${{ steps.skills.outputs.skills }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: pip
-      - run: python -m pip install -r requirements.txt
-      - run: python -m unittest discover -s tests -v
-      - run: python examples/random_vectors.py --method pca --output-format png
+      - run: python -m pip install PyYAML
+      - id: skills
+        shell: python
+        run: |
+          import json, os, re
+          from pathlib import Path
+          import yaml
+          skills = sorted(p for p in Path('skills').iterdir() if p.is_dir())
+          assert skills, 'No skill folders found'
+          for skill in skills:
+              text = (skill / 'SKILL.md').read_text(encoding='utf-8')
+              match = re.match(r'\A---\s*\n(.*?)\n---(?:\n|$)', text, re.S)
+              assert match, f'{skill}: missing YAML frontmatter'
+              metadata = yaml.safe_load(match.group(1))
+              assert isinstance(metadata, dict), f'{skill}: invalid metadata'
+              assert metadata.get('name') == skill.name, f'{skill}: name must match folder'
+              assert re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', skill.name), f'{skill}: invalid name'
+              assert isinstance(metadata.get('description'), str) and metadata['description'].strip(), f'{skill}: missing description'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('skills=' + json.dumps([str(p) for p in skills]) + '\n')
+  validate:
+    needs: discover
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        skill: ${{ fromJSON(needs.discover.outputs.skills) }}
+    defaults:
+      run:
+        working-directory: ${{ matrix.skill }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install skill dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+      - name: Run skill tests
+        run: |
+          if [ -d tests ]; then
+            python -m unittest discover -s tests -v
+          fi
+      - name: Check vector visualization example
+        if: matrix.skill == 'skills/high-dimensional-vector-visualization-executer'
+        run: python examples/random_vectors.py --method pca --output-format png
