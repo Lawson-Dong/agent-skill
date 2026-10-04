@@ -1,0 +1,14 @@
+interface:
+  display_name: High Dimensional Vector Visualization Executer
+  short_description: Reduce high-dimensional vectors into clear 2D plots
+  default_prompt: Use $high-dimensional-vector-visualization-executer to visualize
+    my vectors in 2D with UMAP and export the coordinates.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
