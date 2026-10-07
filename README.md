@@ -7,7 +7,6 @@ A collection of reusable agent skills by Lawson Dong for representation visualiz
 | Skill | Purpose | Instructions |
 | --- | --- | --- |
 | [High Dimensional Vector Visualization Executer](skills/high-dimensional-vector-visualization-executer/) | Reduce vectors or embeddings to 2D with UMAP, PCA, or t-SNE; export interactive HTML or PNG, coordinates, and metadata. | [SKILL.md](skills/high-dimensional-vector-visualization-executer/SKILL.md) |
-
 | [Publish Research Artifacts](skills/publish-research-artifacts/) | Publish completed notebooks, per-metric CSVs, and figures to GitHub with resumable checkpoints, bounded conversation output, and remote hash verification. | [SKILL.md](skills/publish-research-artifacts/SKILL.md) |
 
 ## Use a skill
