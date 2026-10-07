@@ -1,12 +1,14 @@
 # Agent Skills
 
-A collection of reusable agent skills by Lawson Dong. Published skills live together on `main`, each in a self-contained folder under `skills/`.
+A collection of reusable agent skills by Lawson Dong for representation visualization and reliable research artifact publishing. Published skills live together on `main`, each in a self-contained folder under `skills/`.
 
 ## Skill catalog
 
 | Skill | Purpose | Instructions |
 | --- | --- | --- |
 | [High Dimensional Vector Visualization Executer](skills/high-dimensional-vector-visualization-executer/) | Reduce vectors or embeddings to 2D with UMAP, PCA, or t-SNE; export interactive HTML or PNG, coordinates, and metadata. | [SKILL.md](skills/high-dimensional-vector-visualization-executer/SKILL.md) |
+
+| [Publish Research Artifacts](skills/publish-research-artifacts/) | Publish completed notebooks, per-metric CSVs, and figures to GitHub with resumable checkpoints, bounded conversation output, and remote hash verification. | [SKILL.md](skills/publish-research-artifacts/SKILL.md) |
 
 ## Use a skill
 
@@ -23,6 +25,8 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 python examples/random_vectors.py --method umap
 ```
+
+For research publication, read the [Publish Research Artifacts guide](skills/publish-research-artifacts/README.md). This instruction-only skill has no bundled runtime dependencies; it uses the host's supported GitHub tools or an authenticated Git CLI.
 
 ## Repository layout
 
