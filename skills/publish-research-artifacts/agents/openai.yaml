@@ -1,0 +1,15 @@
+interface:
+  display_name: Publish Research Artifacts
+  short_description: Resume verified uploads without context overload
+  default_prompt: Use $publish-research-artifacts to upload my completed notebook,
+    CSV results, and figures while preserving checkpoints and keeping file payloads
+    out of conversation.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
