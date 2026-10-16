@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI Alignment Research Intelligence"
+  short_description: "Auditable weekly alignment and interpretability research"
+  default_prompt: "Use $ai-alignment-research-intelligence to prepare this week’s evidence-grounded AI alignment and interpretability report."
