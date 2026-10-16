@@ -1,6 +1,6 @@
 # Agent Skills
 
-A collection of reusable agent skills by Lawson Dong for representation visualization and reliable research artifact publishing. Published skills live together on `main`, each in a self-contained folder under `skills/`.
+A collection of reusable agent skills by Lawson Dong for scientific evidence briefing, representation visualization, and reliable research artifact publishing. Published skills live together on `main`, each in a self-contained folder under `skills/`.
 
 ## Skill catalog
 
@@ -8,6 +8,7 @@ A collection of reusable agent skills by Lawson Dong for representation visualiz
 | --- | --- | --- |
 | [High Dimensional Vector Visualization Executer](skills/high-dimensional-vector-visualization-executer/) | Reduce vectors or embeddings to 2D with UMAP, PCA, or t-SNE; export interactive HTML or PNG, coordinates, and metadata. | [SKILL.md](skills/high-dimensional-vector-visualization-executer/SKILL.md) |
 | [Publish Research Artifacts](skills/publish-research-artifacts/) | Publish completed notebooks, per-metric CSVs, and figures to GitHub with resumable checkpoints, bounded conversation output, and remote hash verification. | [SKILL.md](skills/publish-research-artifacts/SKILL.md) |
+| [Research Evidence Brief](skills/research-evidence-brief/) | Produce evidence-focused AI alignment and interpretability weeklies with auditable research retrieval, claim-level verification, cross-paper synthesis and a longitudinal ledger. | [SKILL.md](skills/research-evidence-brief/SKILL.md) |
 
 ## Use a skill
 
